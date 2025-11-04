@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
 import axios from "axios";
 
-const API_BASE_URL = "http://localhost:8001";
-const API_ENDPOINT = "/api/web/v1/products";
+const EXTERNAL_API_BASE_URL = process.env.EXTERNAL_API_BASE_URL;
+const EXTERNAL_API_ENDPOINT = "/api/web/v1/products";
 
 export async function GET(request: Request) {
   try {
@@ -24,7 +24,7 @@ export async function GET(request: Request) {
       : {};
 
     const externalResponse = await axios.get(
-      `${API_BASE_URL}${API_ENDPOINT}?${queryString}`,
+      `${EXTERNAL_API_BASE_URL}${EXTERNAL_API_ENDPOINT}?${queryString}`,
       { headers }
     );
 

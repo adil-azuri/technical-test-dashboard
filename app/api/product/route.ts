@@ -1,8 +1,7 @@
 import { NextResponse } from "next/server";
 import axios from "axios";
 
-// Ganti dengan URL External API Anda yang sebenarnya
-const EXTERNAL_API_BASE_URL = "http://localhost:8001";
+const EXTERNAL_API_BASE_URL = process.env.EXTERNAL_API_BASE_URL;
 const EXTERNAL_PRODUCT_ENDPOINT = `${EXTERNAL_API_BASE_URL}/api/web/v1/product`;
 
 // GET /api/product
