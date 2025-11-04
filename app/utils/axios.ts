@@ -5,12 +5,12 @@ import { getIdToken, signOut } from "firebase/auth";
 
 const baseURL = "";
 
-export const api = axios.create({
+export const next_api = axios.create({
   baseURL: baseURL,
   withCredentials: true,
 });
 
-api.interceptors.request.use(
+next_api.interceptors.request.use(
   async (config) => {
     if (typeof window !== "undefined") {
       const user = auth.currentUser;
@@ -41,7 +41,7 @@ api.interceptors.request.use(
   }
 );
 
-api.interceptors.response.use(
+next_api.interceptors.response.use(
   (response) => {
     return response;
   },

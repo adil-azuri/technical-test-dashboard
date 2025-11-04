@@ -7,7 +7,13 @@ const API_ENDPOINT = "/api/web/v1/products";
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
-    const search = searchParams.toString();
+    const page = searchParams.get("page") || "1";
+    const limit = searchParams.get("limit") || "20";
+    const search = searchParams.get("search") || "";
+
+    const apiQuery = new URLSearchParams({ page, limit });
+    if (search) apiQuery.set("search", search);
+    const queryString = apiQuery.toString();
 
     // 1. Ambil Authorization token yang dikirim dari utils/axios.ts
     const authorizationHeader = request.headers.get("Authorization");
@@ -18,13 +24,14 @@ export async function GET(request: Request) {
       : {};
 
     const externalResponse = await axios.get(
-      `${API_BASE_URL}${API_ENDPOINT}?${search}`,
+      `${API_BASE_URL}${API_ENDPOINT}?${queryString}`,
       { headers }
     );
 
     // Teruskan response data dan status code sukses ke frontend
     return NextResponse.json(externalResponse.data);
   } catch (error: any) {
+    //error message
     const status = error.response?.status || 500;
 
     const externalErrorMessage =

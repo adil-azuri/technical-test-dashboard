@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { api } from "../utils/axios";
+import { next_api } from "../utils/axios";
 
 export interface ProductType {
   product_id: string;
@@ -12,7 +12,7 @@ export interface ProductType {
   updated_timestamp: string;
 }
 
-export const useProductData = () => {
+export const useProductData = (searchQuery?: string) => {
   const [data, setData] = useState<ProductType[]>([]);
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -23,11 +23,11 @@ export const useProductData = () => {
       setLoading(true);
       setError(null);
 
-      // PENTING: Panggil Next.js API Route (Proxy) /api/products
-      const url = `/api/products`;
-      const response = await api.get(url);
+      // Next.js API Route (Proxy) /api/products
+      const params = searchQuery ? { search: searchQuery } : {};
+      const response = await next_api.get(`/api/products`, { params });
 
-      setData(response.data.data || []);
+      setData(Array.isArray(response.data.data) ? response.data.data : []);
       setTotal(response.data.total || 0);
     } catch (err: any) {
       const errorMessage =
@@ -37,7 +37,7 @@ export const useProductData = () => {
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [searchQuery]);
 
   useEffect(() => {
     fetchData();

@@ -30,7 +30,7 @@ export default function Login() {
       Cookies.set("auth_token", token, {
         expires: 1,
       });
-      toast.success("Login successful! Redirecting to dashboard.");
+      toast.success("Login successful!");
     } catch (error: any) {
       //error handler with toast
       console.error(error);
@@ -147,7 +147,7 @@ export default function Login() {
             <div className="text-center mt-6 text-sm text-gray-500">
               Don't have an account?{" "}
               <Link
-                href="/register"
+                href="#"
                 className="text-amber-600 font-semibold hover:text-amber-700"
               >
                 Get Started

@@ -1,1 +1,47 @@
 @import "tailwindcss";
+@import "tailwindcss";
+
+/* Container dan Border Luar */
+.custom-product-table .ant-table-container {
+  border: none !important;
+  border-bottom: 3px solid #f59e0b !important;
+}
+
+/* Menghilangkan Garis Tepi Vertikal */
+.custom-product-table .ant-table-cell {
+  border-left: none !important;
+  border-right: none !important;
+}
+
+/* Styling Header: Garis Tebal & Font Besar */
+.custom-product-table .ant-table-thead > tr > th {
+  border-top: 2px solid #f59e0b !important;
+  border-bottom: 2px solid #f59e0b !important;
+  background-color: white !important;
+
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  color: #4b5563;
+}
+
+/* Styling Baris Data: Zebra Striping (Baris Ganjil) */
+.custom-product-table .ant-table-tbody > tr:nth-child(odd) > td {
+  background-color: #fff7ed !important; /* Warna oranye sangat terang */
+}
+
+/* Garis Pemisah Tipis Antar Baris Data */
+.custom-product-table .ant-table-tbody > tr > td {
+  border-bottom: 1px solid #fdd7aa !important;
+  background-color: inherit;
+  padding: 10px 16px;
+}
+
+/* Optional: Menghilangkan garis tepi luar tabel secara keseluruhan */
+.custom-product-table .ant-table-container table {
+  border-collapse: collapse;
+}
+
+/* Optional: Menghilangkan border bawah di baris terakhir data */
+.custom-product-table .ant-table-tbody > tr:last-child > td {
+  border-bottom: none !important;
+}

@@ -1,10 +1,9 @@
-// /app/api/product/route.ts (External API call-nya sudah benar)
 import { NextResponse } from "next/server";
 import axios from "axios";
 
 // Ganti dengan URL External API Anda yang sebenarnya
 const EXTERNAL_API_BASE_URL = "http://localhost:8001";
-const EXTERNAL_PRODUCT_ENDPOINT = `${EXTERNAL_API_BASE_URL}/api/web/v1/product`; // << External API yang BENAR
+const EXTERNAL_PRODUCT_ENDPOINT = `${EXTERNAL_API_BASE_URL}/api/web/v1/product`;
 
 // GET /api/product
 export async function GET(request: Request) {
@@ -28,7 +27,15 @@ export async function GET(request: Request) {
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const externalResponse = await axios.post(EXTERNAL_PRODUCT_ENDPOINT, body);
+    // Get authorization header from request
+    const authHeader = request.headers.get("authorization");
+    const headers: any = {};
+    if (authHeader) {
+      headers.Authorization = authHeader;
+    }
+    const externalResponse = await axios.post(EXTERNAL_PRODUCT_ENDPOINT, body, {
+      headers,
+    });
     return NextResponse.json(externalResponse.data, {
       status: externalResponse.status,
     });
@@ -45,7 +52,15 @@ export async function POST(request: Request) {
 export async function PUT(request: Request) {
   try {
     const body = await request.json();
-    const externalResponse = await axios.put(EXTERNAL_PRODUCT_ENDPOINT, body);
+    // Get authorization header from request
+    const authHeader = request.headers.get("authorization");
+    const headers: any = {};
+    if (authHeader) {
+      headers.Authorization = authHeader;
+    }
+    const externalResponse = await axios.put(EXTERNAL_PRODUCT_ENDPOINT, body, {
+      headers,
+    });
     return NextResponse.json(externalResponse.data, {
       status: externalResponse.status,
     });
