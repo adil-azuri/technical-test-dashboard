@@ -50,7 +50,8 @@
       - `appId` → `NEXT_PUBLIC_FIREBASE_APP_ID`
       - `measurementId` → `NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID` (opsional, jika menggunakan Analytics)
    7. Aktifkan Authentication di Firebase Console dengan mengklik "Authentication" di sidebar kiri, lalu "Get started", dan aktifkan "Email/Password" sebagai penyedia login.
-   8. Untuk `EXTERNAL_API_BASE_URL`, gunakan URL dasar API eksternal yang menyediakan data produk (misalnya, `https://api.example.com`).
+   8. Untuk menambahkan kredensial pengguna, klik pada tab "Users" di bagian Authentication, lalu klik "Add user" dan masukkan email serta password untuk kredensial pengguna.
+   9. Untuk `EXTERNAL_API_BASE_URL`, gunakan URL dasar API eksternal yang menyediakan data produk (misalnya, `https://api.example.com`).
 
 4. Jalankan server pengembangan:
 
