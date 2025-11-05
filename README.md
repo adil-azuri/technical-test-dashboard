@@ -11,7 +11,7 @@
 
    ```bash
    git clone <repository-url>
-   cd markhub
+   cd technical-test-dashboard
    ```
 
 2. Instal dependensi:
