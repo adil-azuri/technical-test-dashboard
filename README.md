@@ -1,36 +1,75 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MARKHUB
 
-## Getting Started
+### Persyaratan Sistem
 
-First, run the development server:
+- Node.js (versi 18 atau lebih tinggi)
+- NPM atau Yarn
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Instalasi
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. Kloning repositori:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+   ```bash
+   git clone <repository-url>
+   cd technical-test-dashboard
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. Instal dependensi:
 
-## Learn More
+   ```bash
+   npm install
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+3. Buat file `.env.local` di direktori root dengan variabel lingkungan berikut:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   ```
+   NEXT_PUBLIC_FIREBASE_API_KEY=""
+   NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=""
+   NEXT_PUBLIC_FIREBASE_PROJECT_ID=""
+   NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=""
+   NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=""
+   NEXT_PUBLIC_FIREBASE_APP_ID=""
+   NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID=""
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+   EXTERNAL_API_BASE_URL=""
+   ```
 
-## Deploy on Vercel
+   **Cara mendapatkan kredensial Firebase:**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   1. Kunjungi [Firebase Console](https://console.firebase.google.com/).
+   2. Buat proyek baru atau pilih proyek yang ada.
+   3. Di bagian "Project settings" (ikon roda gigi), pilih tab "General".
+   4. Gulir ke bawah ke bagian "Your apps" dan klik ikon web (</>) untuk menambahkan aplikasi web.
+   5. Daftarkan aplikasi Anda dengan nama (misalnya, "MARKHUB").
+   6. Salin kredensial yang diberikan:
+      - `apiKey` → `NEXT_PUBLIC_FIREBASE_API_KEY`
+      - `authDomain` → `NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN`
+      - `projectId` → `NEXT_PUBLIC_FIREBASE_PROJECT_ID`
+      - `storageBucket` → `NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET`
+      - `messagingSenderId` → `NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID`
+      - `appId` → `NEXT_PUBLIC_FIREBASE_APP_ID`
+      - `measurementId` → `NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID` (opsional, jika menggunakan Analytics)
+   7. Aktifkan Authentication di Firebase Console dengan mengklik "Authentication" di sidebar kiri, lalu "Get started", dan aktifkan "Email/Password" sebagai penyedia login.
+   8. Untuk menambahkan kredensial pengguna, klik pada tab "Users" di bagian Authentication, lalu klik "Add user" dan masukkan email serta password untuk kredensial pengguna.
+   9. Untuk `EXTERNAL_API_BASE_URL`, gunakan URL dasar API eksternal yang menyediakan data produk (misalnya, `https://api.example.com`).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+4. Jalankan server pengembangan:
+
+   ```bash
+   npm run dev
+   ```
+
+5. Buka [http://localhost:3000](http://localhost:3000) di browser Anda.
+
+6. Navigasi ke halaman login dan masuk dengan kredensial Firebase Anda.
+
+## Variabel Lingkungan
+
+- `NEXT_PUBLIC_FIREBASE_API_KEY` - Kunci API Firebase.
+- `NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN` - Domain Auth Firebase.
+- `NEXT_PUBLIC_FIREBASE_PROJECT_ID` - ID proyek Firebase.
+- `NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET` - Bucket penyimpanan Firebase.
+- `NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID` - ID pengirim pesan Firebase.
+- `NEXT_PUBLIC_FIREBASE_APP_ID` - ID aplikasi Firebase.
+- `NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID` - ID pengukuran Firebase.
+- `EXTERNAL_API_BASE_URL` - URL dasar API eksternal untuk data produk.
